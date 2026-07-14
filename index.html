@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoffeeCraft - Premium Coffee & Order Experience</title>
+  <meta name="description" content="Experience CoffeeCraft, a premium handcrafted coffee shop with seamless online ordering, live brewing tracking, and digital barista workflow management.">
+  
+  <!-- CSS Styling -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Premium Navigation Header -->
+  <header>
+    <a href="#" class="logo-container" id="logo-link">
+      <img src="assets/logo.jpg" alt="CoffeeCraft Logo" class="logo-img">
+      <span class="brand-name">CoffeeCraft</span>
+    </a>
+    
+    <nav class="nav-controls">
+      <button class="view-btn active" id="btn-view-storefront">
+        <i class="fa-solid fa-mug-hot"></i> Storefront
+      </button>
+      <button class="view-btn" id="btn-view-tracker">
+        <i class="fa-solid fa-clock-rotate-left"></i> Track Order
+      </button>
+      <button class="view-btn" id="btn-view-barista">
+        <i class="fa-solid fa-chalkboard-user"></i> Barista View
+      </button>
+      
+      <div class="cart-trigger" id="cart-btn" aria-label="Open Shopping Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-count" id="cart-badge-count">0</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main View Container -->
+  <main>
+    
+    <!-- 1. CUSTOMER STOREFRONT VIEW -->
+    <section class="app-view active" id="view-storefront">
+      <!-- Premium Hero Banner -->
+      <div class="hero-banner glass-panel">
+        <div class="hero-text">
+          <h1>Brewed to <span>Perfection</span>,<br>Served in Real-Time.</h1>
+          <p>Handcrafted drinks made from single-origin beans, combined with a seamless order tracking system. Order your favorite brew and watch it come to life.</p>
+          <button class="category-tab active" style="padding: 0.8rem 2rem; font-size: 1rem;" onclick="document.getElementById('menu-anchor').scrollIntoView({behavior: 'smooth'})">
+            Explore Menu
+          </button>
+        </div>
+        <div class="hero-interactive">
+          <div class="steam-cup-container">
+            <div class="steam-lines">
+              <div class="steam-line"></div>
+              <div class="steam-line"></div>
+              <div class="steam-line"></div>
+            </div>
+            <div class="cup-body">
+              <div class="cup-handle"></div>
+            </div>
+            <div class="cup-plate"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Menu Navigation Anchor -->
+      <div id="menu-anchor"></div>
+
+      <!-- Categories Selector -->
+      <div class="category-container">
+        <button class="category-tab active" data-category="all">All Items</button>
+        <button class="category-tab" data-category="hot">Hot Coffees</button>
+        <button class="category-tab" data-category="cold">Cold Brews</button>
+        <button class="category-tab" data-category="bakery">Fresh Bakery</button>
+        <button class="category-tab" data-category="specials">Craft Specials</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menu-container">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- 2. CUSTOMER ORDER TRACKER VIEW -->
+    <section class="app-view" id="view-tracker">
+      <div class="tracker-view">
+        <div class="tracker-card glass-panel" id="tracker-status-card">
+          <!-- Dynamic contents if no order is active -->
+          <div class="cart-empty-state">
+            <i class="fa-solid fa-mug-saucer"></i>
+            <h3 class="tracker-title">No Active Order</h3>
+            <p>Place an order in the Storefront to track its progress here in real-time!</p>
+            <button class="category-tab active" style="margin-top: 1rem;" onclick="document.getElementById('btn-view-storefront').click();">
+              Order Now
+            </button>
+          </div>
+        </div>
+        
+        <!-- Loyalty points panel -->
+        <div class="loyalty-promo-card glass-panel" style="margin-top: 2rem;">
+          <div class="loyalty-left">
+            <h4>CoffeeCraft Rewards Club</h4>
+            <p>Every purchase brings you closer to a free handcrafted brew. Earn 10 points per dollar spent!</p>
+          </div>
+          <div class="loyalty-badge-circle">
+            <span id="tracker-loyalty-points">120</span>
+            <span>Pts</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BARISTA DASHBOARD VIEW -->
+    <section class="app-view" id="view-barista">
+      <!-- Metrics row -->
+      <div class="metrics-row">
+        <div class="metric-card glass-panel">
+          <div class="metric-icon"><i class="fa-solid fa-list-check"></i></div>
+          <div class="metric-details">
+            <span class="metric-label">Active Orders</span>
+            <span class="metric-value" id="barista-metric-active">0</span>
+          </div>
+        </div>
+        
+        <div class="metric-card glass-panel">
+          <div class="metric-icon" style="color: var(--success); background: rgba(80, 184, 120, 0.1);"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <div class="metric-details">
+            <span class="metric-label">Total Revenue</span>
+            <span class="metric-value" id="barista-metric-revenue">₹0.00</span>
+          </div>
+        </div>
+
+        <div class="metric-card glass-panel">
+          <div class="metric-icon" style="color: var(--warning); background: rgba(241, 180, 76, 0.1);"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="metric-details">
+            <span class="metric-label">Completed</span>
+            <span class="metric-value" id="barista-metric-completed">0</span>
+          </div>
+        </div>
+
+        <div class="metric-card glass-panel">
+          <div class="metric-icon" style="color: var(--accent); background: rgba(200, 122, 83, 0.1);"><i class="fa-solid fa-fire-flame-simple"></i></div>
+          <div class="metric-details">
+            <span class="metric-label">Popular Brew</span>
+            <span class="metric-value" id="barista-metric-popular">-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Board -->
+      <div class="dashboard-grid">
+        <!-- Left Panel: Ticket Queue Board -->
+        <div>
+          <div class="dashboard-title-row">
+            <h2>Order Queue Board</h2>
+            <div class="dashboard-actions">
+              <button class="btn-barista-action" id="btn-clear-completed" title="Clear all completed tickets">
+                <i class="fa-solid fa-broom"></i> Clean Up
+              </button>
+            </div>
+          </div>
+          
+          <div class="queue-board">
+            <!-- Column 1: Pending Queue -->
+            <div class="queue-column">
+              <div class="column-header">
+                <span class="column-title" style="color: var(--danger);">Pending Queue</span>
+                <span class="column-count" id="count-pending">0</span>
+              </div>
+              <div class="column-list" id="queue-pending-list">
+                <!-- Inserted by JS -->
+              </div>
+            </div>
+
+            <!-- Column 2: In-Prep Queue -->
+            <div class="queue-column">
+              <div class="column-header">
+                <span class="column-title" style="color: var(--warning);">Preparing</span>
+                <span class="column-count" id="count-preparing">0</span>
+              </div>
+              <div class="column-list" id="queue-preparing-list">
+                <!-- Inserted by JS -->
+              </div>
+            </div>
+
+            <!-- Column 3: Ready for Pickup -->
+            <div class="queue-column">
+              <div class="column-header">
+                <span class="column-title" style="color: var(--success);">Ready</span>
+                <span class="column-count" id="count-ready">0</span>
+              </div>
+              <div class="column-list" id="queue-ready-list">
+                <!-- Inserted by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Analytics & Simulator controls -->
+        <div class="dashboard-right-panel">
+          <!-- Charts -->
+          <div class="bar-chart-container glass-panel">
+            <h3 class="chart-title"><i class="fa-solid fa-chart-simple"></i> Menu Popularity Index</h3>
+            <div class="bar-chart" id="barista-analytics-chart">
+              <!-- Bars generated dynamically by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Simulation Controls -->
+          <div class="sim-controls glass-panel">
+            <h3 class="chart-title"><i class="fa-solid fa-terminal"></i> Barista Simulator Tools</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Use these controls to simulate dummy customer orders or perform stress tests on the barista queue board.</p>
+            <div class="sim-btn-row">
+              <button class="btn-sim" id="btn-sim-order">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Inject Custom Order
+              </button>
+              <button class="btn-sim" id="btn-sim-auto" style="background: rgba(80, 184, 120, 0.1); border-color: rgba(80, 184, 120, 0.3); color: var(--success);">
+                <i class="fa-solid fa-play"></i> Toggle Auto-Customer (10s)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sidebar Drawer for Shopping Cart -->
+  <aside class="cart-sidebar glass-panel" id="cart-drawer">
+    <div class="cart-header">
+      <span class="cart-title"><i class="fa-solid fa-cart-shopping"></i> Your Order Cart</span>
+      <button class="btn-close-cart" id="btn-close-cart" aria-label="Close Cart">&times;</button>
+    </div>
+    
+    <div class="cart-items-list" id="cart-items-container">
+      <!-- Populated by JS -->
+    </div>
+    
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Tax (GST 5%)</span>
+        <span id="cart-tax">₹0.00</span>
+      </div>
+      <div class="summary-row total">
+        <span>Grand Total</span>
+        <span id="cart-grandtotal">₹0.00</span>
+      </div>
+      <button class="btn-checkout" id="btn-checkout-cta">
+        Proceed to Checkout & Brewing
+      </button>
+    </div>
+  </aside>
+
+  <!-- Customization Modal -->
+  <div class="modal-overlay" id="customize-modal-overlay">
+    <div class="customize-modal glass-panel">
+      <div class="modal-header">
+        <span class="modal-title" id="modal-drink-title">Customize Beverage</span>
+        <button class="btn-close-modal" id="btn-close-modal-x">&times;</button>
+      </div>
+      
+      <div class="modal-body" id="modal-drink-options">
+        <!-- Hot/Cold Select -->
+        <div class="customize-section" id="mod-section-temp">
+          <span class="section-label">Temperature Preference</span>
+          <div class="option-group" id="mod-opt-temp">
+            <button class="option-btn selected" data-value="hot">Classic Hot</button>
+            <button class="option-btn" data-value="iced">Over Ice (Iced)</button>
+          </div>
+        </div>
+
+        <!-- Size Select -->
+        <div class="customize-section" id="mod-section-size">
+          <span class="section-label">Cup Size</span>
+          <div class="option-group" id="mod-opt-size">
+            <button class="option-btn" data-value="tall">Tall (350ml)</button>
+            <button class="option-btn selected" data-value="grande">Grande (450ml)</button>
+            <button class="option-btn" data-value="venti">Venti (590ml) (+₹40)</button>
+          </div>
+        </div>
+
+        <!-- Milk Type Select -->
+        <div class="customize-section" id="mod-section-milk">
+          <span class="section-label">Choice of Milk</span>
+          <div class="option-group" id="mod-opt-milk">
+            <button class="option-btn selected" data-value="whole">Whole Milk</button>
+            <button class="option-btn" data-value="almond">Almond Milk (+₹30)</button>
+            <button class="option-btn" data-value="oat">Oat Milk (+₹40)</button>
+            <button class="option-btn" data-value="coconut">Coconut Milk (+₹30)</button>
+          </div>
+        </div>
+
+        <!-- Espresso Shots Slider -->
+        <div class="customize-section" id="mod-section-shots">
+          <span class="section-label">Espresso Strength (Shots)</span>
+          <div class="slider-container">
+            <input type="range" class="custom-slider" id="mod-val-shots" min="1" max="4" value="2">
+            <span class="slider-val" id="mod-label-shots">2 Shots</span>
+          </div>
+        </div>
+
+        <!-- Sweetness Selector -->
+        <div class="customize-section" id="mod-section-sweetness">
+          <span class="section-label">Sweetness Level</span>
+          <div class="slider-container">
+            <input type="range" class="custom-slider" id="mod-val-sweetness" min="0" max="100" step="25" value="50">
+            <span class="slider-val" id="mod-label-sweetness">Medium (50%)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-price">
+          <span class="price-label">Customized Price</span>
+          <span class="price-val" id="modal-drink-price">₹0.00</span>
+        </div>
+        <button class="btn-add-to-cart" id="btn-add-to-cart-cta">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Chimes for Real-Time Experience -->
+  <audio id="audio-new-order" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-120.wav" preload="auto"></audio>
+  <audio id="audio-order-ready" src="https://assets.mixkit.co/active_storage/sfx/911/911-120.wav" preload="auto"></audio>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

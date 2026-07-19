@@ -3,22 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CoffeeCraft - Premium Coffee & Order Experience</title>
-  <meta name="description" content="Experience CoffeeCraft, a premium handcrafted coffee shop with seamless online ordering, live brewing tracking, and digital barista workflow management.">
-  
-  <!-- CSS Styling -->
+  <title>Niloufer Cafe - Premium Hyderabadi Chai & Eats</title>
+  <meta name="description" content="Savor the legendary taste of Hyderabad's Niloufer Cafe. Order our signature Irani Chai, Osmania Biscuits, and fresh Bun Maska with real-time tracking.">
   <link rel="stylesheet" href="styles.css">
-  
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Premium Navigation Header -->
+  <!-- Rebranded Navigation Header -->
   <header>
     <a href="#" class="logo-container" id="logo-link">
-      <img src="assets/logo.jpg" alt="CoffeeCraft Logo" class="logo-img">
-      <span class="brand-name">CoffeeCraft</span>
+      <img src="assets/logo.jpg" alt="Niloufer Cafe Logo" class="logo-img">
+      <span class="brand-name">Niloufer Cafe</span>
     </a>
     
     <nav class="nav-controls">
@@ -47,8 +43,8 @@
       <!-- Premium Hero Banner -->
       <div class="hero-banner glass-panel">
         <div class="hero-text">
-          <h1>Brewed to <span>Perfection</span>,<br>Served in Real-Time.</h1>
-          <p>Handcrafted drinks made from single-origin beans, combined with a seamless order tracking system. Order your favorite brew and watch it come to life.</p>
+          <h1>Authentic <span>Irani Chai</span>,<br>Served in Hyderabad.</h1>
+          <p>Savor the rich legacy of Niloufer Cafe. From our legendary creamy Irani Chai and buttery Osmania Biscuits to fresh Bun Maska, order your favorites and watch them get ready in real-time.</p>
           <button class="category-tab active" style="padding: 0.8rem 2rem; font-size: 1rem;" onclick="document.getElementById('menu-anchor').scrollIntoView({behavior: 'smooth'})">
             Explore Menu
           </button>
@@ -60,24 +56,22 @@
               <div class="steam-line"></div>
               <div class="steam-line"></div>
             </div>
-            <div class="cup-body">
-              <div class="cup-handle"></div>
+            <div class="cup-body" style="background: linear-gradient(135deg, #c87a53 0%, #8b4a20 100%);">
+              <div class="cup-handle" style="border-color: #c87a53;"></div>
             </div>
             <div class="cup-plate"></div>
           </div>
         </div>
       </div>
       
-      <!-- Menu Navigation Anchor -->
       <div id="menu-anchor"></div>
 
       <!-- Categories Selector -->
       <div class="category-container">
         <button class="category-tab active" data-category="all">All Items</button>
-        <button class="category-tab" data-category="hot">Hot Coffees</button>
-        <button class="category-tab" data-category="cold">Cold Brews</button>
-        <button class="category-tab" data-category="bakery">Fresh Bakery</button>
-        <button class="category-tab" data-category="specials">Craft Specials</button>
+        <button class="category-tab" data-category="beverage">Chai & Coffee</button>
+        <button class="category-tab" data-category="bakery">Niloufer Bakery</button>
+        <button class="category-tab" data-category="snacks">Snacks & Eats</button>
       </div>
 
       <!-- Menu Grid -->
@@ -90,7 +84,6 @@
     <section class="app-view" id="view-tracker">
       <div class="tracker-view">
         <div class="tracker-card glass-panel" id="tracker-status-card">
-          <!-- Dynamic contents if no order is active -->
           <div class="cart-empty-state">
             <i class="fa-solid fa-mug-saucer"></i>
             <h3 class="tracker-title">No Active Order</h3>
@@ -104,8 +97,8 @@
         <!-- Loyalty points panel -->
         <div class="loyalty-promo-card glass-panel" style="margin-top: 2rem;">
           <div class="loyalty-left">
-            <h4>CoffeeCraft Rewards Club</h4>
-            <p>Every purchase brings you closer to a free handcrafted brew. Earn 10 points per dollar spent!</p>
+            <h4>Niloufer Club Card</h4>
+            <p>Earn points with every sip of traditional Irani Chai! Redeem points for free bakery treats.</p>
           </div>
           <div class="loyalty-badge-circle">
             <span id="tracker-loyalty-points">120</span>
@@ -146,7 +139,7 @@
         <div class="metric-card glass-panel">
           <div class="metric-icon" style="color: var(--accent); background: rgba(200, 122, 83, 0.1);"><i class="fa-solid fa-fire-flame-simple"></i></div>
           <div class="metric-details">
-            <span class="metric-label">Popular Brew</span>
+            <span class="metric-label">Popular Eat</span>
             <span class="metric-value" id="barista-metric-popular">-</span>
           </div>
         </div>
@@ -157,7 +150,7 @@
         <!-- Left Panel: Ticket Queue Board -->
         <div>
           <div class="dashboard-title-row">
-            <h2>Order Queue Board</h2>
+            <h2>Chai & Order Queue</h2>
             <div class="dashboard-actions">
               <button class="btn-barista-action" id="btn-clear-completed" title="Clear all completed tickets">
                 <i class="fa-solid fa-broom"></i> Clean Up
@@ -169,12 +162,10 @@
             <!-- Column 1: Pending Queue -->
             <div class="queue-column">
               <div class="column-header">
-                <span class="column-title" style="color: var(--danger);">Pending Queue</span>
+                <span class="column-title" style="color: var(--danger);">Pending</span>
                 <span class="column-count" id="count-pending">0</span>
               </div>
-              <div class="column-list" id="queue-pending-list">
-                <!-- Inserted by JS -->
-              </div>
+              <div class="column-list" id="queue-pending-list"></div>
             </div>
 
             <!-- Column 2: In-Prep Queue -->
@@ -183,9 +174,7 @@
                 <span class="column-title" style="color: var(--warning);">Preparing</span>
                 <span class="column-count" id="count-preparing">0</span>
               </div>
-              <div class="column-list" id="queue-preparing-list">
-                <!-- Inserted by JS -->
-              </div>
+              <div class="column-list" id="queue-preparing-list"></div>
             </div>
 
             <!-- Column 3: Ready for Pickup -->
@@ -194,9 +183,7 @@
                 <span class="column-title" style="color: var(--success);">Ready</span>
                 <span class="column-count" id="count-ready">0</span>
               </div>
-              <div class="column-list" id="queue-ready-list">
-                <!-- Inserted by JS -->
-              </div>
+              <div class="column-list" id="queue-ready-list"></div>
             </div>
           </div>
         </div>
@@ -205,19 +192,17 @@
         <div class="dashboard-right-panel">
           <!-- Charts -->
           <div class="bar-chart-container glass-panel">
-            <h3 class="chart-title"><i class="fa-solid fa-chart-simple"></i> Menu Popularity Index</h3>
-            <div class="bar-chart" id="barista-analytics-chart">
-              <!-- Bars generated dynamically by JavaScript -->
-            </div>
+            <h3 class="chart-title"><i class="fa-solid fa-chart-simple"></i> Niloufer Popularity Index</h3>
+            <div class="bar-chart" id="barista-analytics-chart"></div>
           </div>
 
           <!-- Simulation Controls -->
           <div class="sim-controls glass-panel">
-            <h3 class="chart-title"><i class="fa-solid fa-terminal"></i> Barista Simulator Tools</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Use these controls to simulate dummy customer orders or perform stress tests on the barista queue board.</p>
+            <h3 class="chart-title"><i class="fa-solid fa-terminal"></i> Niloufer Cafe Simulator</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Use these controls to inject dummy client orders or auto-populate the active Hyderabad order boards.</p>
             <div class="sim-btn-row">
               <button class="btn-sim" id="btn-sim-order">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> Inject Custom Order
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Inject Chai/Bakery Order
               </button>
               <button class="btn-sim" id="btn-sim-auto" style="background: rgba(80, 184, 120, 0.1); border-color: rgba(80, 184, 120, 0.3); color: var(--success);">
                 <i class="fa-solid fa-play"></i> Toggle Auto-Customer (10s)
@@ -233,13 +218,11 @@
   <!-- Sidebar Drawer for Shopping Cart -->
   <aside class="cart-sidebar glass-panel" id="cart-drawer">
     <div class="cart-header">
-      <span class="cart-title"><i class="fa-solid fa-cart-shopping"></i> Your Order Cart</span>
+      <span class="cart-title"><i class="fa-solid fa-cart-shopping"></i> Your Niloufer Order</span>
       <button class="btn-close-cart" id="btn-close-cart" aria-label="Close Cart">&times;</button>
     </div>
     
-    <div class="cart-items-list" id="cart-items-container">
-      <!-- Populated by JS -->
-    </div>
+    <div class="cart-items-list" id="cart-items-container"></div>
     
     <div class="cart-summary">
       <div class="summary-row">
@@ -255,7 +238,7 @@
         <span id="cart-grandtotal">₹0.00</span>
       </div>
       <button class="btn-checkout" id="btn-checkout-cta">
-        Proceed to Checkout & Brewing
+        Place Order & Brew Chai
       </button>
     </div>
   </aside>
@@ -264,56 +247,55 @@
   <div class="modal-overlay" id="customize-modal-overlay">
     <div class="customize-modal glass-panel">
       <div class="modal-header">
-        <span class="modal-title" id="modal-drink-title">Customize Beverage</span>
+        <span class="modal-title" id="modal-drink-title">Customize Order</span>
         <button class="btn-close-modal" id="btn-close-modal-x">&times;</button>
       </div>
       
       <div class="modal-body" id="modal-drink-options">
         <!-- Hot/Cold Select -->
         <div class="customize-section" id="mod-section-temp">
-          <span class="section-label">Temperature Preference</span>
+          <span class="section-label">Serving Preference</span>
           <div class="option-group" id="mod-opt-temp">
-            <button class="option-btn selected" data-value="hot">Classic Hot</button>
-            <button class="option-btn" data-value="iced">Over Ice (Iced)</button>
+            <button class="option-btn selected" data-value="hot">Traditional Hot</button>
+            <button class="option-btn" data-value="iced">Iced Craft Style</button>
           </div>
         </div>
 
         <!-- Size Select -->
         <div class="customize-section" id="mod-section-size">
-          <span class="section-label">Cup Size</span>
+          <span class="section-label">Portion Size</span>
           <div class="option-group" id="mod-opt-size">
-            <button class="option-btn" data-value="tall">Tall (350ml)</button>
-            <button class="option-btn selected" data-value="grande">Grande (450ml)</button>
-            <button class="option-btn" data-value="venti">Venti (590ml) (+₹40)</button>
+            <button class="option-btn" data-value="regular">Regular Cup</button>
+            <button class="option-btn selected" data-value="large">Special Mug (+₹30)</button>
+            <button class="option-btn" data-value="flask">Family Flask (Serves 4) (+₹120)</button>
           </div>
         </div>
 
-        <!-- Milk Type Select -->
+        <!-- Malai Float/Milk Select -->
         <div class="customize-section" id="mod-section-milk">
-          <span class="section-label">Choice of Milk</span>
+          <span class="section-label">Extra Malai (Fresh Cream Float)</span>
           <div class="option-group" id="mod-opt-milk">
-            <button class="option-btn selected" data-value="whole">Whole Milk</button>
-            <button class="option-btn" data-value="almond">Almond Milk (+₹30)</button>
-            <button class="option-btn" data-value="oat">Oat Milk (+₹40)</button>
-            <button class="option-btn" data-value="coconut">Coconut Milk (+₹30)</button>
+            <button class="option-btn selected" data-value="none">No Extra Cream</button>
+            <button class="option-btn" data-value="single">Single Spoon Malai (+₹20)</button>
+            <button class="option-btn" data-value="double">Double Spoon Malai (+₹35)</button>
           </div>
         </div>
 
-        <!-- Espresso Shots Slider -->
+        <!-- Chai Strength Slider (replaces shots) -->
         <div class="customize-section" id="mod-section-shots">
-          <span class="section-label">Espresso Strength (Shots)</span>
+          <span class="section-label">Decoction Strength (Brew Level)</span>
           <div class="slider-container">
-            <input type="range" class="custom-slider" id="mod-val-shots" min="1" max="4" value="2">
-            <span class="slider-val" id="mod-label-shots">2 Shots</span>
+            <input type="range" class="custom-slider" id="mod-val-shots" min="1" max="3" value="2">
+            <span class="slider-val" id="mod-label-shots">Medium</span>
           </div>
         </div>
 
-        <!-- Sweetness Selector -->
+        <!-- Sweetness Slider (Sugar Level) -->
         <div class="customize-section" id="mod-section-sweetness">
-          <span class="section-label">Sweetness Level</span>
+          <span class="section-label">Sugar Level</span>
           <div class="slider-container">
-            <input type="range" class="custom-slider" id="mod-val-sweetness" min="0" max="100" step="25" value="50">
-            <span class="slider-val" id="mod-label-sweetness">Medium (50%)</span>
+            <input type="range" class="custom-slider" id="mod-val-sweetness" min="0" max="100" step="25" value="75">
+            <span class="slider-val" id="mod-label-sweetness">Normal Sugar (75%)</span>
           </div>
         </div>
       </div>
@@ -323,7 +305,7 @@
           <span class="price-label">Customized Price</span>
           <span class="price-val" id="modal-drink-price">₹0.00</span>
         </div>
-        <button class="btn-add-to-cart" id="btn-add-to-cart-cta">Add to Cart</button>
+        <button class="btn-add-to-cart" id="btn-add-to-cart-cta">Add to Order</button>
       </div>
     </div>
   </div>
@@ -332,7 +314,6 @@
   <audio id="audio-new-order" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-120.wav" preload="auto"></audio>
   <audio id="audio-order-ready" src="https://assets.mixkit.co/active_storage/sfx/911/911-120.wav" preload="auto"></audio>
 
-  <!-- Application Logic -->
   <script src="app.js"></script>
 </body>
 </html>

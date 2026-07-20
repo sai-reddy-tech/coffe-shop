@@ -4,9 +4,10 @@ Niloufer Cafe is a high-fidelity, interactive single-page web application (SPA) 
 
 Rebranded to represent the historic **Niloufer Cafe in Hyderabad**, the menu showcases authentic local treats like Irani Chai, frothed Filter Coffee, Osmania Biscuits, and fresh Bun Maska.
 ## Example Screenshot
+<img width="1916" height="893" alt="Home page" src="https://github.com/user-attachments/assets/5577143a-4aae-4232-bdb9-8e7df6c9f21e" />
+<img width="1917" height="890" alt="order place page" src="https://github.com/user-attachments/assets/366be698-5362-4e97-8313-48aba4225673" />
 <img width="1917" height="911" alt="order list" src="https://github.com/user-attachments/assets/733048c0-e1ff-4f51-8863-ac7a87e8dd6b" />
-
-
+<img width="1916" height="910" alt="orders confirmation" src="https://github.com/user-attachments/assets/eaa17ac1-fc09-42d4-a688-cfd2d9a0ff40" />
 
 ## ☕ Key Features
 

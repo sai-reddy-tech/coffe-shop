@@ -3,8 +3,8 @@
 Niloufer Cafe is a high-fidelity, interactive single-page web application (SPA) built using modern Vanilla HTML5, CSS3, and JavaScript. The application models an end-to-end cafe lifecycle, combining a customer ordering interface with a real-time order status tracker and a live barista management dashboard.
 
 Rebranded to represent the historic **Niloufer Cafe in Hyderabad**, the menu showcases authentic local treats like Irani Chai, frothed Filter Coffee, Osmania Biscuits, and fresh Bun Maska.
+## Example Screenshot
 
----
 
 ## ☕ Key Features
 
@@ -69,10 +69,7 @@ Since the application uses `localStorage` sync and modular assets, running it th
    ```bash
    python -m http.server 8000
    ```
-   Or if you prefer Node.js:
-   ```bash
-   npx http-server -p 8000
-   ```
+
 
 2. **Open the browser**:
    Navigate to:

@@ -66,19 +66,14 @@ coffeecraft/
 ## 🚀 How to Run Locally
 
 Since the application uses `localStorage` sync and modular assets, running it through a local HTTP server is recommended:
+ open the vscode use golive server 
 
-1. **Start a local server**:
-   If you have Python installed, open terminal inside the project directory and run:
-   ```bash
-   python -m http.server 8000
-   ```
-
-
-2. **Open the browser**:
+ **Open the browser**:
    Navigate to:
    ```text
    http://localhost:8000/
    ```
+
 
 3. **Multi-Window Sync Testing**:
    Open the website in two browser windows side-by-side. 

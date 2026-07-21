@@ -9,6 +9,8 @@ Rebranded to represent the historic **Niloufer Cafe in Hyderabad**, the menu sho
 <img width="1917" height="911" alt="order list" src="https://github.com/user-attachments/assets/733048c0-e1ff-4f51-8863-ac7a87e8dd6b" />
 <img width="1916" height="910" alt="orders confirmation" src="https://github.com/user-attachments/assets/eaa17ac1-fc09-42d4-a688-cfd2d9a0ff40" />
 
+**Demo video link**
+https://drive.google.com/file/d/18SGsxIk1y_jBudqv22fvQIa6o2bh6VaD/view?usp=drive_link
 
 ## ☕ Key Features
 
